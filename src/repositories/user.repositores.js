@@ -1,4 +1,4 @@
-import db from "../config/database";
+import db from "../config/database.js";
 
 db.run(`
     CREATE TABLE IF NOT EXISTS users (
@@ -23,7 +23,7 @@ function createUserRepository(newUser) {
                 if (err) {
                     reject(err);
                 } else {
-                    resolve({message: "User created successfully" });
+                    resolve({id: this.lastID, ...newUser})
                 }
             }
         );
